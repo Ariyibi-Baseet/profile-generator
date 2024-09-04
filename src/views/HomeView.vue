@@ -86,6 +86,8 @@
           </td>
         </tr>
       </table>
+
+      <button>Generate Profile</button>
     </div>
   </div>
 </template>
