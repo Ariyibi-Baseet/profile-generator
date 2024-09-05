@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap");
+
+$bgBlue: #004f98;
+$font-suse: "SUSE", sans-serif;
+
+%flex-stuff {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+%table-full {
+  width: 100%;
+}
+
+%td-left-half {
+  text-align: left;
+  width: 50%;
+}
+
+.home-container {
+  height: 100vh;
+  background-color: $bgBlue;
+  font-family: $font-suse;
+  @extend %flex-stuff;
+  .profile-generator-block {
+    width: 500px;
+    max-width: 500px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    h1 {
+      margin-bottom: 20px;
+      color: $bgBlue;
+    }
+    .profile-table {
+      @extend %table-full;
+      td {
+        @extend %td-left-half;
+      }
+      input {
+        width: 100%;
+        outline: none;
+      }
+      textarea {
+        width: 100%;
+        outline: none;
+      }
+    }
+    .social-link-table {
+      @extend %table-full;
+      td {
+        @extend %td-left-half;
+        padding: 7px;
+        button {
+          float: right;
+          clear: right;
+          cursor: pointer;
+        }
+      }
+      input {
+        width: 100%;
+        outline: none;
+      }
+    }
+  }
+}
