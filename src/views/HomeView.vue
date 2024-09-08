@@ -1,7 +1,50 @@
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import axios from "axios";
+
+const router = useRouter();
+const profileResponse = ref("");
+
+const profileFormData = ref({
+  brand: "",
+  headerImage: "",
+  headerTitle: "",
+  headerDescription: "",
+  facebookLink: "",
+  twitterLink: "",
+  linkedinLink: "",
+  githubLink: "",
+});
+
+const submitProfileInfo = () => {
+  if (profileFormData.value) {
+    // alert("Yeah, You are good to go");
+    // profileFormData.value = "";
+    fetchData();
+    router.push("/profile-details");
+  } else {
+    alert("Not working");
+  }
+};
+
+const fetchData = async () => {
+  try {
+    const response = await axios.get("http://localhost:1000/details");
+    profileResponse.value = response.data;
+  } catch (error) {
+    console.log("Error");
+  }
+};
+
+// onMounted(() => {
+//   fetchData();
+// });
+</script>
 
 <template>
   <div class="home-container">
+    {{ profileResponse.value }}
     <div class="profile-generator-block">
       <h1>Profile Generator</h1>
       <table class="profile-table">
@@ -11,7 +54,11 @@
               <h4>Brand name</h4>
             </td>
             <td>
-              <input type="text" placeholder="your brand or logo here" />
+              <input
+                type="text"
+                placeholder="your brand or logo here"
+                v-model="profileFormData.brand"
+              />
             </td>
           </tr>
           <tr>
@@ -31,7 +78,7 @@
               <h4>Header Image</h4>
             </td>
             <td>
-              <input type="text" />
+              <input type="text" v-model="profileFormData.headerImage" />
             </td>
           </tr>
           <tr>
@@ -39,7 +86,7 @@
               <h4>Header Title</h4>
             </td>
             <td>
-              <input type="text" />
+              <input type="text" v-model="profileFormData.headerTitle" />
             </td>
           </tr>
           <tr>
@@ -47,7 +94,11 @@
               <h4>Header Description</h4>
             </td>
             <td>
-              <textarea name="" id=""></textarea>
+              <textarea
+                name=""
+                id=""
+                v-model="profileFormData.headerDescription"
+              ></textarea>
             </td>
           </tr>
         </tbody>
@@ -61,7 +112,11 @@
               <h4>Facebook</h4>
             </td>
             <td>
-              <input type="text" placeholder="Your Facebook Profile Link" />
+              <input
+                type="text"
+                placeholder="Your Facebook Profile Link"
+                v-model="profileFormData.facebookLink"
+              />
             </td>
           </tr>
           <tr>
@@ -70,9 +125,9 @@
             </td>
             <td>
               <input
-                disabled
-                type="file"
+                type="text"
                 placeholder="Your Twitter Profile Link"
+                v-model="profileFormData.twitterLink"
               />
             </td>
           </tr>
@@ -81,7 +136,11 @@
               <h4>Linkedin</h4>
             </td>
             <td>
-              <input type="text" placeholder="Your Linkedin Profile Link" />
+              <input
+                type="text"
+                placeholder="Your Linkedin Profile Link"
+                v-model="profileFormData.linkedinLink"
+              />
             </td>
           </tr>
           <tr>
@@ -89,12 +148,18 @@
               <h4>Github</h4>
             </td>
             <td>
-              <input type="text" placeholder="Your Github Profile Link" />
+              <input
+                type="text"
+                placeholder="Your Github Profile Link"
+                v-model="profileFormData.githubLink"
+              />
             </td>
           </tr>
           <tr>
             <td></td>
-            <td><button>Generate Profile</button></td>
+            <td>
+              <button @click="submitProfileInfo">Generate Profile</button>
+            </td>
           </tr>
         </tbody>
       </table>
