@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
+// import LoaderComponent from "@/components/LoaderComponent.vue";
 
 const router = useRouter();
 const profileResponse = ref("");
@@ -19,8 +20,6 @@ const profileFormData = ref({
 
 const submitProfileInfo = () => {
   if (profileFormData.value) {
-    // alert("Yeah, You are good to go");
-    // profileFormData.value = "";
     fetchData();
     router.push("/profile-details");
   } else {
@@ -165,6 +164,7 @@ const fetchData = async () => {
       </table>
     </div>
   </div>
+  <!-- <LoaderComponent /> -->
 </template>
 
 <style lang="scss" scoped>

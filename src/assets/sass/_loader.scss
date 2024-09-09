@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap");
+
+$bgBlue: #004f98;
+$font-suse: "SUSE", sans-serif;
+
+.loader-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background-color: #fff;
+  img {
+    display: block;
+    margin: auto;
+  }
+  h4 {
+    font-family: $font-suse;
+    font-size: 1.9rem;
+    color: $bgBlue;
+    text-align: center;
+  }
+  @media screen and (max-width: 600px) {
+    h4 {
+      font-size: 1.5rem;
+    }
+  }
+}
