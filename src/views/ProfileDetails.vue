@@ -6,7 +6,9 @@ const profileContent = ref("");
 
 const getProfileContent = async () => {
   try {
-    const response = await axios.get("http://localhost:1000/details");
+    const response = await axios.get(
+      "http://localhost:1000/profile-generated-page"
+    );
     profileContent.value = response.data;
   } catch (error) {
     console.log(error);
@@ -19,7 +21,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="profile-details-wrapper" v-html="profileContent"></div>
+  <div class="profile-details-wrapper">
+    <p @click="$router.push('/')">👈 Back</p>
+    <p>{{ profileContent }}</p>
+    <!-- <div class="profile-details" v-html="profileContent"></div> -->
+  </div>
 </template>
 
 <style lang="scss" scoped>

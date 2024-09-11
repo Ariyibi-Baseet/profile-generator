@@ -20,16 +20,25 @@ const profileFormData = ref({
 
 const submitProfileInfo = () => {
   if (profileFormData.value) {
-    fetchData();
+    submitFormData();
     router.push("/profile-details");
   } else {
     alert("Not working");
   }
 };
 
-const fetchData = async () => {
+const submitFormData = async () => {
   try {
-    const response = await axios.get("http://localhost:1000/details");
+    const response = await axios.post("http://localhost:1000/profile-data", {
+      brand: profileFormData.value.brand,
+      headerImage: profileFormData.value.headerImage,
+      headerTitle: profileFormData.value.headerTitle,
+      headerDescription: profileFormData.value.headerDescription,
+      facebookLink: profileFormData.value.facebookLink,
+      twitterLink: profileFormData.value.twitterLink,
+      linkedinLink: profileFormData.value.linkedinLink,
+      githubLink: profileFormData.value.githubLink,
+    });
     profileResponse.value = response.data;
   } catch (error) {
     console.log("Error");
@@ -43,7 +52,7 @@ const fetchData = async () => {
 
 <template>
   <div class="home-container">
-    {{ profileResponse.value }}
+    <!-- {{ profileResponse.value }} -->
     <div class="profile-generator-block">
       <h1>Profile Generator</h1>
       <table class="profile-table">
