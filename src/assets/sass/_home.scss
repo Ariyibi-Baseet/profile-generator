@@ -9,59 +9,21 @@ $font-suse: "SUSE", sans-serif;
   justify-content: center;
 }
 
-%table-full {
-  width: 100%;
-}
-
-%td-left-half {
-  text-align: left;
-  width: 50%;
-  padding: 7px;
-}
-
 .home-container {
   height: 100vh;
   background-color: $bgBlue;
   font-family: $font-suse;
   @extend %flex-stuff;
   .profile-generator-block {
-    width: 500px;
-    max-width: 500px;
+    width: 50%;
     background-color: #fff;
     border-radius: 10px;
     padding: 20px;
-    text-align: center;
-    h1 {
-      margin-bottom: 20px;
-      color: $bgBlue;
-    }
-    .profile-table {
-      @extend %table-full;
-      td {
-        @extend %td-left-half;
-      }
-      input {
-        width: 100%;
-        outline: none;
-      }
-      textarea {
-        width: 100%;
-        outline: none;
-      }
-    }
-    .social-link-table {
-      @extend %table-full;
-      td {
-        @extend %td-left-half;
-        button {
-          float: right;
-          clear: right;
-          cursor: pointer;
-        }
-      }
-      input {
-        width: 100%;
-        outline: none;
+    font-family: $font-suse;
+    .social-link-block {
+      .generate-profile-btn {
+        background-color: $bgBlue;
+        color: #fff;
       }
     }
   }

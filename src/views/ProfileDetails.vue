@@ -22,12 +22,23 @@ onMounted(() => {
 
 <template>
   <div class="profile-details-wrapper">
-    <p @click="$router.push('/')">👈 Back</p>
-    <p>{{ profileContent }}</p>
-    <!-- <div class="profile-details" v-html="profileContent"></div> -->
+    <!-- <p @click="$router.push('/')">👈 Back</p> -->
+    <div class="profile-details" v-html="profileContent"></div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 @import "../assets/sass/_profile-details";
+* {
+  text-decoration: none !important;
+}
+.navbar-brand {
+  font-size: 30px;
+}
+.profile-wrapper {
+  margin-top: 100px;
+}
+.image-right img {
+  width: 350px;
+}
 </style>
